@@ -1,7 +1,7 @@
-diff --git "a/original\\tools\\clang\\scripts\\build.py" "b/tools\\clang\\scripts\\build.py"
+diff --git a/tools/clang/scripts/build.py b/tools/clang/scripts/build.py
 index 6d57def43567e..afd0e1a7864d0 100644
---- "a/original\\tools\\clang\\scripts\\build.py"
-+++ "b/tools\\clang\\scripts\\build.py"
+--- a/tools/clang/scripts/build.py
++++ b/tools/clang/scripts/build.py
 @@ -69,7 +69,11 @@ ANDROID_NDK_CANARY_TOOLCHAIN_DIR = os.path.join(
      ANDROID_NDK_CANARY_DIR, ANDROID_NDK_TOOLCHAIN_RELATIVE_DIR)
  FUCHSIA_SDK_DIR = os.path.join(CHROMIUM_DIR, 'third_party', 'fuchsia-sdk',
@@ -33,43 +33,7 @@ index 6d57def43567e..afd0e1a7864d0 100644
        return
  
      # If we can't use the current repo, delete it.
-@@ -208,21 +214,21 @@ def GetCommitDescription(commit):
- 
- 
- def AddCMakeToPath():
--  """Download CMake and add it to PATH."""
--  if sys.platform == 'win32':
--    zip_name = 'cmake-3.26.4-windows-x86_64.zip'
--    dir_name = ['cmake-3.26.4-windows-x86_64', 'bin']
--  elif sys.platform == 'darwin':
--    zip_name = 'cmake-3.26.4-macos-universal.tar.gz'
--    dir_name = ['cmake-3.26.4-macos-universal', 'CMake.app', 'Contents', 'bin']
--  else:
--    zip_name = 'cmake-3.26.4-linux-x86_64.tar.gz'
--    dir_name = ['cmake-3.26.4-linux-x86_64', 'bin']
--
--  cmake_dir = os.path.join(LLVM_BUILD_TOOLS_DIR, *dir_name)
--  if not os.path.exists(cmake_dir):
--    DownloadAndUnpack(CDS_URL + '/tools/' + zip_name, LLVM_BUILD_TOOLS_DIR)
--  os.environ['PATH'] = cmake_dir + os.pathsep + os.environ.get('PATH', '')
-+    """Download CMake and add it to PATH."""
-+    if sys.platform == 'win32':
-+      zip_name = 'cmake-3.26.4-windows-x86_64.zip'
-+      dir_name = ['cmake-3.26.4-windows-x86_64', 'bin']
-+    elif sys.platform == 'darwin':
-+      zip_name = 'cmake-3.26.4-macos-universal.tar.gz'
-+      dir_name = ['cmake-3.26.4-macos-universal', 'CMake.app', 'Contents', 'bin']
-+    else:
-+      zip_name = 'cmake-3.26.4-linux-x86_64.tar.gz'
-+      dir_name = ['cmake-3.26.4-linux-x86_64', 'bin']
-+    
-+    cmake_dir = os.path.join(LLVM_BUILD_TOOLS_DIR, *dir_name)
-+    if not os.path.exists(cmake_dir):
-+      DownloadAndUnpack(CDS_URL + '/tools/' + zip_name, LLVM_BUILD_TOOLS_DIR)
-+    os.environ['PATH'] = cmake_dir + os.pathsep + os.environ.get('PATH', '')
- 
- 
- def AddGnuWinToPath():
+
 @@ -377,6 +383,11 @@ def BuildLibXml2():
            '-DLIBXML2_WITH_XPATH=OFF',
            '-DLIBXML2_WITH_XPTR=OFF',
